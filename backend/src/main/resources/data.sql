@@ -1,0 +1,10 @@
+INSERT INTO tasks (id, description, priority, status, due_date) VALUES (RANDOM_UUID(), 'Complete project documentation', 1, 'PENDING', TIMESTAMP '2024-12-15 10:00:00');
+INSERT INTO tasks (id, description, priority, status, due_date) VALUES (RANDOM_UUID(), 'Fix critical bug in authentication', 0, 'PENDING', TIMESTAMP '2024-12-12 14:30:00');
+INSERT INTO tasks (id, description, priority, status, due_date) VALUES (RANDOM_UUID(), 'Code review for PR #123', 2, 'FINISHED', TIMESTAMP '2024-12-10 16:00:00');
+INSERT INTO tasks (id, description, priority, status, due_date) VALUES (RANDOM_UUID(), 'Update dependencies to latest versions', 2, 'PENDING', TIMESTAMP '2024-12-20 09:00:00');
+INSERT INTO tasks (id, description, priority, status, due_date) VALUES (RANDOM_UUID(), 'Write unit tests for TaskService', 1, 'PENDING', TIMESTAMP '2024-12-18 11:00:00');
+INSERT INTO tasks (id, description, priority, status, due_date) VALUES (RANDOM_UUID(), 'Deploy to production environment', 0, 'FINISHED', TIMESTAMP '2024-12-09 17:00:00');
+INSERT INTO tasks (id, description, priority, status, due_date) VALUES (RANDOM_UUID(), 'Refactor database queries', 1, 'PENDING', TIMESTAMP '2024-12-16 13:00:00');
+INSERT INTO tasks (id, description, priority, status, due_date) VALUES (RANDOM_UUID(), 'Setup CI/CD pipeline', 0, 'PENDING', TIMESTAMP '2024-12-14 15:00:00');
+INSERT INTO tasks (id, description, priority, status, due_date) VALUES (RANDOM_UUID(), 'Create API documentation', 2, 'FINISHED', TIMESTAMP '2024-12-08 10:30:00');
+INSERT INTO tasks (id, description, priority, status, due_date) VALUES (RANDOM_UUID(), 'Performance optimization review', 1, 'PENDING', TIMESTAMP '2024-12-19 14:00:00');
