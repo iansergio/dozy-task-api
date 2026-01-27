@@ -1,13 +1,14 @@
 package com.backend.controller;
 
 import com.backend.domain.task.Task;
-import com.backend.dto.TaskRequest;
+import com.backend.dto.TaskRequestDTO;
 import com.backend.service.TaskService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/tasks")
@@ -20,10 +21,14 @@ public class TaskController {
     }
 
     @PostMapping
-    public ResponseEntity<Task> save(@Valid @RequestBody TaskRequest request) {
-        Task task = service.save(request);
-        URI location = URI.create("/api/tasks/" + task.getId());
+    public ResponseEntity<Task> create(@Valid @RequestBody TaskRequestDTO dto) {
+        Task savedTask = service.create(dto);
+        URI location = URI.create("/api/tasks/" + savedTask.getId());
+        return ResponseEntity.created(location).body(savedTask);
+    }
 
-        return ResponseEntity.created(location).body(task);
+    @GetMapping
+    public ResponseEntity<List<Task>> getAllTasks() {
+        return ResponseEntity.ok(service.getAllTasks());
     }
 }

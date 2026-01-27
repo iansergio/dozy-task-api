@@ -1,6 +1,7 @@
 package com.backend.domain.task;
 
 import com.backend.domain.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -37,14 +38,15 @@ public class Task {
     // Várias tarefas pertencem a um único usuário
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private User user;
 
-    public Task(String title, String description, TaskPriority priority, TaskStatus status, LocalDateTime dueDate, UUID userId) {
+    public Task(String title, String description, TaskPriority priority, TaskStatus status, LocalDateTime localDateTime, UUID id) {
         this.title = title;
         this.description = description;
         this.priority = priority;
         this.status = status;
-        this.dueDate = dueDate;
-        this.user = new User(userId);
+        this.user = new User(id);
     }
+
 }
