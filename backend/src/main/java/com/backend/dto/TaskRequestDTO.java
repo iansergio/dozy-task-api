@@ -22,7 +22,7 @@ public class TaskRequestDTO {
     private TaskStatus status; // PENDING, FINISHED
 
     @NotNull(message = "Date can not be null")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
     LocalDateTime dueDate;
 
     @NotNull(message = "User id can not be null")
