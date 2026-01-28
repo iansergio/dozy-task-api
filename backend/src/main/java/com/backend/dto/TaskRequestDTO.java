@@ -12,19 +12,19 @@ import java.util.UUID;
 @Data
 public class TaskRequestDTO {
 
-    @NotNull(message = "Title can not be null")
+    @NotNull(message = "Title cannot be null")
     private String title;
 
-    @NotNull(message = "Description can not be null")
+    @NotNull(message = "Description cannot be null")
     private String description;
 
     private TaskPriority priority; // HIGH, MEDIUM, LOW
     private TaskStatus status; // PENDING, FINISHED
 
-    @NotNull(message = "Date can not be null")
+    @NotNull(message = "Date cannot be null")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
     LocalDateTime dueDate;
 
-    @NotNull(message = "User id can not be null")
+    @NotNull(message = "User id cannot be null")
     private UUID userId;
 }
