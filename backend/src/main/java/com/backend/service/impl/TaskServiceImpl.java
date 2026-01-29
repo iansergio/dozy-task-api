@@ -3,7 +3,8 @@ package com.backend.service.impl;
 import com.backend.domain.task.Task;
 import com.backend.domain.task.TaskStatus;
 import com.backend.domain.user.User;
-import com.backend.dto.GetTaskRequest;
+import com.backend.dto.SaveTaskRequest;
+import com.backend.dto.TaskResponse;
 import com.backend.dto.UpdateTaskInfosRequest;
 import com.backend.dto.UpdateTaskStatusRequest;
 import com.backend.repository.TaskRepository;
@@ -28,7 +29,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Task save(GetTaskRequest request) {
+    public TaskResponse save(SaveTaskRequest request) {
         User user = userRepository.findById(request.getUserId())
                 .orElseThrow(() -> new NoSuchElementException("User associated with task not found"));
 
@@ -45,54 +46,58 @@ public class TaskServiceImpl implements TaskService {
                 user
         );
 
-        return taskRepository.save(task);
+        Task savedTask = taskRepository.save(task);
+
+        return new TaskResponse(
+                savedTask.getId(),
+                savedTask.getTitle(),
+                savedTask.getDescription(),
+                savedTask.getPriority(),
+                savedTask.getStatus(),
+                savedTask.getDueDate(),
+                savedTask.getUser().getId()
+        );
     }
 
     @Override
-    public List<Task> findAll() {
-        return taskRepository.findAll();
+    public List<TaskResponse> findAll() {
+        return taskRepository.findAll()
+                .stream()
+                .map(TaskResponse::from)
+                .toList();
     }
 
-    public Optional<Task> findById(UUID id) {
-        return taskRepository.findById(id);
+    public Optional<TaskResponse> findById(UUID id) {
+        return taskRepository.findById(id)
+                .map(TaskResponse::from);
     }
 
     @Override
-    public Task delete(UUID id) {
+    public TaskResponse delete(UUID id) {
         Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Task not found with id: " + id));
+
         taskRepository.delete(task);
-        return task;
+
+        return TaskResponse.from(task);
     }
 
     @Override
-    public Task update(UUID id, GetTaskRequest request) {
-        Task updatedTask = taskRepository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("Task not found"));
-
-        updatedTask.setTitle(request.getTitle());
-        updatedTask.setDescription(request.getDescription());
-        updatedTask.setPriority(request.getPriority());
-        updatedTask.setStatus(request.getStatus());
-        updatedTask.setDueDate(request.getDueDate());
-
-        return taskRepository.save(updatedTask);
-    }
-
-    @Override
-    public Task updateStatus(UUID id, UpdateTaskStatusRequest request) {
+    public TaskResponse updateStatus(UUID id, UpdateTaskStatusRequest request) {
         Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Task not found"));
 
         task.setStatus(request.getStatus());
-        return taskRepository.save(task);
+
+        Task updated = taskRepository.save(task);
+
+        return TaskResponse.from(updated);
     }
 
     @Override
-    public Task updateTaskInfo(UUID id, UpdateTaskInfosRequest request) {
+    public TaskResponse updateTaskInfo(UUID id, UpdateTaskInfosRequest request) {
         Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Task not found"));
-
         if (request.getTitle() != null) {
             task.setTitle(request.getTitle());
         }
@@ -108,6 +113,9 @@ public class TaskServiceImpl implements TaskService {
         if(request.getDueDate() != null) {
             task.setDueDate(request.getDueDate());
         }
-        return taskRepository.save(task);
+
+        Task updated = taskRepository.save(task);
+
+        return TaskResponse.from(updated);
     }
 }

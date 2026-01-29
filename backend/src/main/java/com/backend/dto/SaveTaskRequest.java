@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
-public class GetTaskRequest {
+public class SaveTaskRequest {
 
     @NotNull(message = "Title cannot be null")
     private String title;

@@ -1,7 +1,8 @@
 package com.backend.controller;
 
 import com.backend.domain.task.Task;
-import com.backend.dto.GetTaskRequest;
+import com.backend.dto.SaveTaskRequest;
+import com.backend.dto.TaskResponse;
 import com.backend.dto.UpdateTaskInfosRequest;
 import com.backend.dto.UpdateTaskStatusRequest;
 import com.backend.service.TaskService;
@@ -24,53 +25,45 @@ public class TaskController {
     }
 
     @PostMapping
-    public ResponseEntity<Task> createTask(@Valid @RequestBody GetTaskRequest request) {
-        Task savedTask = service.save(request);
+    public ResponseEntity<TaskResponse> createTask(@Valid @RequestBody SaveTaskRequest request) {
+        TaskResponse savedTask = service.save(request);
         URI location = URI.create("/api/tasks/" + savedTask.getId());
         return ResponseEntity.created(location).body(savedTask);
     }
 
     @GetMapping
-    public ResponseEntity<List<Task>> getAllTasks() {
+    public ResponseEntity<List<TaskResponse>> getAllTasks() {
         return ResponseEntity.ok(service.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Task> getTaskById(@PathVariable UUID id) {
+    public ResponseEntity<TaskResponse> getTaskById(@PathVariable UUID id) {
         return service.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Task> deleteTask(@PathVariable UUID id) {
+    public ResponseEntity<TaskResponse> deleteTask(@PathVariable UUID id) {
         return ResponseEntity.ok(service.delete(id));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Task> updateTask(
+    @PatchMapping("/{id}/infos")
+    public ResponseEntity<TaskResponse> updateTaskInfos(
             @PathVariable UUID id,
-            @Valid @RequestBody GetTaskRequest request
+            @Valid @RequestBody UpdateTaskInfosRequest request
     ) {
-        Task updated = service.update(id, request);
+        TaskResponse updated = service.updateTaskInfo(id, request);
         return ResponseEntity.ok(updated);
     }
 
     @PatchMapping("/{id}/status")
-    public ResponseEntity<Task> updateTaskStatus(
+    public ResponseEntity<TaskResponse> updateTaskStatus(
             @PathVariable UUID id,
             @Valid @RequestBody UpdateTaskStatusRequest request
     ) {
-        Task updated = service.updateStatus(id, request);
+        TaskResponse updated = service.updateStatus(id, request);
         return ResponseEntity.ok(updated);
     }
 
-    @PatchMapping("/{id}/infos")
-    public ResponseEntity<Task> updateTaskInfos(
-            @PathVariable UUID id,
-            @Valid @RequestBody UpdateTaskInfosRequest request
-    ) {
-        Task updated = service.updateTaskInfo(id, request);
-        return ResponseEntity.ok(updated);
-    }
 }

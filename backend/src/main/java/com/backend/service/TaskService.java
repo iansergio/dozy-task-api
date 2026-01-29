@@ -1,7 +1,8 @@
 package com.backend.service;
 
 import com.backend.domain.task.Task;
-import com.backend.dto.GetTaskRequest;
+import com.backend.dto.SaveTaskRequest;
+import com.backend.dto.TaskResponse;
 import com.backend.dto.UpdateTaskInfosRequest;
 import com.backend.dto.UpdateTaskStatusRequest;
 
@@ -10,11 +11,10 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface TaskService {
-    Task save(GetTaskRequest request);
-    List<Task> findAll();
-    Optional<Task> findById(UUID id);
-    Task delete(UUID id);
-    Task update(UUID id, GetTaskRequest request);
-    Task updateStatus(UUID id, UpdateTaskStatusRequest request);
-    Task updateTaskInfo(UUID id, UpdateTaskInfosRequest request);
+    TaskResponse save(SaveTaskRequest request);
+    List<TaskResponse> findAll();
+    Optional<TaskResponse> findById(UUID id);
+    TaskResponse delete(UUID id);
+    TaskResponse updateTaskInfo(UUID id, UpdateTaskInfosRequest request);
+    TaskResponse updateStatus(UUID id, UpdateTaskStatusRequest request);
 }
