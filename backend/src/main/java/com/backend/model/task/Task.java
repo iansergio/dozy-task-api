@@ -1,6 +1,6 @@
-package com.backend.domain.task;
+package com.backend.model.task;
 
-import com.backend.domain.user.User;
+import com.backend.model.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;

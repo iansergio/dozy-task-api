@@ -1,4 +1,4 @@
-package com.backend.domain.user;
+package com.backend.model.user;
 
 import lombok.Getter;
 

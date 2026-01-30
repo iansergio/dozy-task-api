@@ -1,7 +1,7 @@
 package com.backend.dto;
 
-import com.backend.domain.task.TaskPriority;
-import com.backend.domain.task.TaskStatus;
+import com.backend.model.task.TaskPriority;
+import com.backend.model.task.TaskStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;

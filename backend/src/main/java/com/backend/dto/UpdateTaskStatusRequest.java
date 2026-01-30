@@ -1,6 +1,6 @@
 package com.backend.dto;
 
-import com.backend.domain.task.TaskStatus;
+import com.backend.model.task.TaskStatus;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 

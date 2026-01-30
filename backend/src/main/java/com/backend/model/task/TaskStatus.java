@@ -1,11 +1,11 @@
-package com.backend.domain.task;
+package com.backend.model.task;
 
 import lombok.Getter;
 
 @Getter
 public enum TaskStatus {
     PENDING("PENDING"),
-    FINISHED("FINISHED");
+    FINISHED("COMPLETED");
 
     private final String value;
 

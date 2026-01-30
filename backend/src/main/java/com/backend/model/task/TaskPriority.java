@@ -1,4 +1,4 @@
-package com.backend.domain.task;
+package com.backend.model.task;
 
 import lombok.Getter;
 

@@ -1,8 +1,8 @@
 package com.backend.service.impl;
 
-import com.backend.domain.task.Task;
-import com.backend.domain.task.TaskStatus;
-import com.backend.domain.user.User;
+import com.backend.model.task.Task;
+import com.backend.model.task.TaskStatus;
+import com.backend.model.user.User;
 import com.backend.dto.SaveTaskRequest;
 import com.backend.dto.TaskResponse;
 import com.backend.dto.UpdateTaskInfosRequest;

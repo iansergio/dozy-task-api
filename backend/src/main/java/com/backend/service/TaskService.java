@@ -1,6 +1,5 @@
 package com.backend.service;
 
-import com.backend.domain.task.Task;
 import com.backend.dto.SaveTaskRequest;
 import com.backend.dto.TaskResponse;
 import com.backend.dto.UpdateTaskInfosRequest;

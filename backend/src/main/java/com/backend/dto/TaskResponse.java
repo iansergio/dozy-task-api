@@ -1,8 +1,8 @@
 package com.backend.dto;
 
-import com.backend.domain.task.Task;
-import com.backend.domain.task.TaskPriority;
-import com.backend.domain.task.TaskStatus;
+import com.backend.model.task.Task;
+import com.backend.model.task.TaskPriority;
+import com.backend.model.task.TaskStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

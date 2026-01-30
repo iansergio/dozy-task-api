@@ -1,11 +1,14 @@
 package com.backend.controller;
 
-import com.backend.domain.task.Task;
 import com.backend.dto.SaveTaskRequest;
 import com.backend.dto.TaskResponse;
 import com.backend.dto.UpdateTaskInfosRequest;
 import com.backend.dto.UpdateTaskStatusRequest;
 import com.backend.service.TaskService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +19,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/tasks")
+@Tag(name = "Tasks", description = "Endpoints para gerenciar tarefas")
 public class TaskController {
 
     private final TaskService service;
@@ -25,6 +29,11 @@ public class TaskController {
     }
 
     @PostMapping
+    @Operation(summary = "Criar task")
+    @ApiResponses({
+            @ApiResponse(responseCode = "201", description = "Criado com sucesso"),
+            @ApiResponse(responseCode = "400", description = "Dados inválidos")
+    })
     public ResponseEntity<TaskResponse> createTask(@Valid @RequestBody SaveTaskRequest request) {
         TaskResponse savedTask = service.save(request);
         URI location = URI.create("/api/tasks/" + savedTask.getId());

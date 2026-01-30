@@ -1,6 +1,6 @@
-package com.backend.domain.user;
+package com.backend.model.user;
 
-import com.backend.domain.task.Task;
+import com.backend.model.task.Task;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.Data;
