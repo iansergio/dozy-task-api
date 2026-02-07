@@ -3,11 +3,10 @@ package com.backend.service.impl;
 import com.backend.entity.task.Task;
 import com.backend.entity.task.Status;
 import com.backend.entity.user.User;
-import com.backend.dto.task.SaveTaskRequest;
+import com.backend.dto.task.CreateTaskRequest;
 import com.backend.dto.task.TaskResponse;
-import com.backend.dto.task.UpdateTaskInfosRequest;
+import com.backend.dto.task.UpdateTaskRequest;
 import com.backend.dto.task.UpdateTaskStatusRequest;
-import com.backend.exception.InvalidDataException;
 import com.backend.exception.TaskNotFoundException;
 import com.backend.repository.TaskRepository;
 import com.backend.repository.UserRepository;
@@ -31,7 +30,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public TaskResponse save(SaveTaskRequest request) {
+    public TaskResponse save(CreateTaskRequest request) {
         User user = userRepository.findById(request.getUserId())
                 .orElseThrow(() -> new NoSuchElementException("User associated with task not found"));
 
@@ -83,7 +82,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public TaskResponse updateTaskInfos(UUID id, UpdateTaskInfosRequest request) {
+    public TaskResponse updateTaskInfos(UUID id, UpdateTaskRequest request) {
         Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new TaskNotFoundException(id));
 
@@ -104,7 +103,6 @@ public class TaskServiceImpl implements TaskService {
         }
 
         Task updated = taskRepository.save(task);
-
         return TaskResponse.from(updated);
     }
 
@@ -114,8 +112,8 @@ public class TaskServiceImpl implements TaskService {
                 .orElseThrow(() -> new TaskNotFoundException(id));
 
         task.setStatus(request.getStatus());
-        Task updated = taskRepository.save(task);
 
+        Task updated = taskRepository.save(task);
         return TaskResponse.from(updated);
     }
 }

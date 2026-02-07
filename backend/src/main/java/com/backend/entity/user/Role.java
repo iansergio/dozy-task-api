@@ -3,13 +3,13 @@ package com.backend.entity.user;
 import lombok.Getter;
 
 @Getter
-public enum UserRole {
+public enum Role {
     ADMIN(1),
     USER(0);
 
     private final int value;
 
-    UserRole(int value) {
+    Role(int value) {
         this.value = value;
     }
 }

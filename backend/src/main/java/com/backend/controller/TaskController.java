@@ -1,8 +1,8 @@
 package com.backend.controller;
 
-import com.backend.dto.task.SaveTaskRequest;
+import com.backend.dto.task.CreateTaskRequest;
 import com.backend.dto.task.TaskResponse;
-import com.backend.dto.task.UpdateTaskInfosRequest;
+import com.backend.dto.task.UpdateTaskRequest;
 import com.backend.dto.task.UpdateTaskStatusRequest;
 import com.backend.service.TaskService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -19,7 +19,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/tasks")
-@Tag(name = "Tasks", description = "Endpoints para gerenciar tarefas")
+@Tag(name = "Tasks", description = "Task managing endpoints")
 public class TaskController {
 
     private final TaskService service;
@@ -34,7 +34,7 @@ public class TaskController {
             @ApiResponse(responseCode = "200", description = "Success"),
             @ApiResponse(responseCode = "400", description = "Invalid data")
     })
-    public ResponseEntity<TaskResponse> createTask(@Valid @RequestBody SaveTaskRequest request) {
+    public ResponseEntity<TaskResponse> createTask(@Valid @RequestBody CreateTaskRequest request) {
         TaskResponse savedTask = service.save(request);
         URI location = URI.create("/api/tasks/" + savedTask.getId());
         return ResponseEntity.created(location).body(savedTask);
@@ -76,7 +76,7 @@ public class TaskController {
     @PatchMapping("/{id}/infos")
     public ResponseEntity<TaskResponse> updateTaskInfos(
             @PathVariable UUID id,
-            @Valid @RequestBody UpdateTaskInfosRequest request
+            @Valid @RequestBody UpdateTaskRequest request
     ) {
         TaskResponse updated = service.updateTaskInfos(id, request);
         return ResponseEntity.ok(updated);

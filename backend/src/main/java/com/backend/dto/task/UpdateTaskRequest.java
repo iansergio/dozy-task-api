@@ -1,16 +1,16 @@
 package com.backend.dto.task;
 
 import com.backend.entity.task.Priority;
-import com.backend.entity.task.Status;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
-@Data
-public class SaveTaskRequest {
+@Getter
+@Setter
+public class UpdateTaskRequest {
 
     @NotBlank(message = "Title is required")
     private String title;
@@ -19,13 +19,8 @@ public class SaveTaskRequest {
     private String description;
 
     @NotNull(message = "Priority is required")
-    private Priority priority; // HIGH, MEDIUM, LOW
-
-    private Status status; // PENDING, COMPLETED
+    private Priority priority;
 
     @NotNull(message = "Due date is required")
     private LocalDateTime dueDate;
-
-    @NotNull(message = "User ID is required")
-    private UUID userId;
 }

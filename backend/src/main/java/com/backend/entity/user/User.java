@@ -24,7 +24,7 @@ public class User extends BaseEntity {
     private String email;
 
     private String password;
-    private UserRole role;
+    private Role role;
 
     /**
      * Um usuário tem várias tarefas
@@ -39,4 +39,16 @@ public class User extends BaseEntity {
         this.id = userId;
     }
 
+    public User(String email, String password, Role role) {
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
+
+    public User(String email, String password, Role role, List<Task> tasks) {
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.tasks = tasks;
+    }
 }
