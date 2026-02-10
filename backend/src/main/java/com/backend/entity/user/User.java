@@ -7,6 +7,7 @@ import jakarta.validation.constraints.Email;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -20,11 +21,15 @@ public class User extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    private String name;
+
     @Email
     private String email;
 
     private String password;
     private Role role;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
     /**
      * Um usuário tem várias tarefas
@@ -35,14 +40,12 @@ public class User extends BaseEntity {
     public User() {
     }
 
-    public User(UUID userId) {
-        this.id = userId;
-    }
-
-    public User(String email, String password, Role role) {
+    public User(String email, String password, Role role, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.email = email;
         this.password = password;
         this.role = role;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     public User(String email, String password, Role role, List<Task> tasks) {

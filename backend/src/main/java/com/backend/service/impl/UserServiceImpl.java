@@ -1,6 +1,6 @@
 package com.backend.service.impl;
 
-import com.backend.dto.user.CreateUserRequest;
+import com.backend.dto.user.RegisterRequest;
 import com.backend.dto.user.FindUserByEmailResponse;
 import com.backend.dto.user.UpdateUserPasswordRequest;
 import com.backend.dto.user.UserResponse;
@@ -11,6 +11,7 @@ import com.backend.repository.UserRepository;
 import com.backend.service.UserService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -25,11 +26,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResponse save(CreateUserRequest request) {
+    public UserResponse save(RegisterRequest request) {
         User user = new User(
                 request.getEmail(),
                 request.getPassword(),
-                Role.USER
+                Role.USER,
+                LocalDateTime.now(),
+                LocalDateTime.now()
         );
 
         User savedUser = userRepository.save(user);
@@ -64,6 +67,7 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow(() -> new UserNotFoundException(id));
 
         user.setPassword(request.getPassword());
+        user.setUpdatedAt(LocalDateTime.now());
 
         User updated = userRepository.save(user);
         return UserResponse.from(updated);

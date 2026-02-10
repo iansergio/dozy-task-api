@@ -1,10 +1,9 @@
 package com.backend.controller;
 
-import com.backend.dto.user.CreateUserRequest;
+import com.backend.dto.user.RegisterRequest;
 import com.backend.dto.user.FindUserByEmailResponse;
 import com.backend.dto.user.UpdateUserPasswordRequest;
 import com.backend.dto.user.UserResponse;
-import com.backend.entity.user.User;
 import com.backend.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -35,7 +34,7 @@ public class UserController {
             @ApiResponse(responseCode = "201", description = "User created successfully"),
             @ApiResponse(responseCode = "400", description = "Invalid data")
     })
-    public ResponseEntity<UserResponse> createUser(@Valid @RequestBody CreateUserRequest request) {
+    public ResponseEntity<UserResponse> createUser(@Valid @RequestBody RegisterRequest request) {
         UserResponse savedUser = service.save(request);
         URI location = URI.create("/api/users/" + savedUser.getId());
         return ResponseEntity.created(location).body(savedUser);
