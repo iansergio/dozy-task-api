@@ -1,6 +1,6 @@
 package com.backend.controller;
 
-import com.backend.dto.user.RegisterRequest;
+import com.backend.dto.auth.RegisterRequest;
 import com.backend.dto.user.FindUserByEmailResponse;
 import com.backend.dto.user.UpdateUserPasswordRequest;
 import com.backend.dto.user.UserResponse;
