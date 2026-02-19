@@ -1,4 +1,4 @@
-package com.backend.entity.task;
+package com.backend.model.enums;
 
 import lombok.Getter;
 

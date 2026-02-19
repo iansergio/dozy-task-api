@@ -1,6 +1,6 @@
-package com.backend.dto.task;
+package com.backend.dto.request;
 
-import com.backend.entity.task.Status;
+import com.backend.model.enums.Status;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;

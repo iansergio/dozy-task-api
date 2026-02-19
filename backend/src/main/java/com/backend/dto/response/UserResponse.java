@@ -1,7 +1,6 @@
-package com.backend.dto.user;
+package com.backend.dto.response;
 
-import com.backend.dto.task.TaskResponse;
-import com.backend.entity.user.User;
+import com.backend.model.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

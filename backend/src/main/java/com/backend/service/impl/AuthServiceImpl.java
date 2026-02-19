@@ -1,11 +1,11 @@
 package com.backend.service.impl;
 
-import com.backend.dto.auth.AuthResponse;
-import com.backend.dto.auth.LoginRequest;
-import com.backend.dto.auth.RegisterRequest;
-import com.backend.entity.token.RefreshToken;
-import com.backend.entity.user.Role;
-import com.backend.entity.user.User;
+import com.backend.dto.response.AuthResponse;
+import com.backend.dto.request.LoginRequest;
+import com.backend.dto.request.RegisterRequest;
+import com.backend.model.entity.RefreshToken;
+import com.backend.model.enums.Role;
+import com.backend.model.entity.User;
 import com.backend.repository.UserRepository;
 import com.backend.service.AuthService;
 import com.backend.service.JwtService;

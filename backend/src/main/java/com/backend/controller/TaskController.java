@@ -1,9 +1,9 @@
 package com.backend.controller;
 
-import com.backend.dto.task.CreateTaskRequest;
-import com.backend.dto.task.TaskResponse;
-import com.backend.dto.task.UpdateTaskRequest;
-import com.backend.dto.task.UpdateTaskStatusRequest;
+import com.backend.dto.request.CreateTaskRequest;
+import com.backend.dto.response.TaskResponse;
+import com.backend.dto.request.UpdateTaskRequest;
+import com.backend.dto.request.UpdateTaskStatusRequest;
 import com.backend.service.TaskService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

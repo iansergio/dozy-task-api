@@ -1,6 +1,6 @@
-package com.backend.dto.task;
+package com.backend.dto.request;
 
-import com.backend.entity.task.Priority;
+import com.backend.model.enums.Priority;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.backend.entity.token;
+package com.backend.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

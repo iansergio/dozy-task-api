@@ -1,6 +1,6 @@
 package com.backend.repository;
 
-import com.backend.entity.token.RefreshToken;
+import com.backend.model.entity.RefreshToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

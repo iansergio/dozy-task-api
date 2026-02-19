@@ -1,6 +1,6 @@
 package com.backend.service.impl;
 
-import com.backend.entity.token.RefreshToken;
+import com.backend.model.entity.RefreshToken;
 import com.backend.repository.RefreshTokenRepository;
 import com.backend.service.RefreshTokenService;
 import jakarta.transaction.Transactional;

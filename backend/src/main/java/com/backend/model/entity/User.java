@@ -1,7 +1,7 @@
-package com.backend.entity.user;
+package com.backend.model.entity;
 
-import com.backend.core.BaseEntity;
-import com.backend.entity.task.Task;
+import com.backend.model.core.BaseEntity;
+import com.backend.model.enums.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.Getter;

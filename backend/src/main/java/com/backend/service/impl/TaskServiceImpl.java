@@ -1,12 +1,12 @@
 package com.backend.service.impl;
 
-import com.backend.entity.task.Task;
-import com.backend.entity.task.Status;
-import com.backend.entity.user.User;
-import com.backend.dto.task.CreateTaskRequest;
-import com.backend.dto.task.TaskResponse;
-import com.backend.dto.task.UpdateTaskRequest;
-import com.backend.dto.task.UpdateTaskStatusRequest;
+import com.backend.model.entity.Task;
+import com.backend.model.enums.Status;
+import com.backend.model.entity.User;
+import com.backend.dto.request.CreateTaskRequest;
+import com.backend.dto.response.TaskResponse;
+import com.backend.dto.request.UpdateTaskRequest;
+import com.backend.dto.request.UpdateTaskStatusRequest;
 import com.backend.exception.TaskNotFoundException;
 import com.backend.repository.TaskRepository;
 import com.backend.repository.UserRepository;

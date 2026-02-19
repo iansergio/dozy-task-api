@@ -1,8 +1,8 @@
 package com.backend.service;
 
-import com.backend.dto.auth.AuthResponse;
-import com.backend.dto.auth.LoginRequest;
-import com.backend.dto.auth.RegisterRequest;
+import com.backend.dto.response.AuthResponse;
+import com.backend.dto.request.LoginRequest;
+import com.backend.dto.request.RegisterRequest;
 
 public interface AuthService {
     AuthResponse register(RegisterRequest request);

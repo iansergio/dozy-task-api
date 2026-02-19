@@ -1,6 +1,6 @@
 package com.backend.service;
 
-import com.backend.entity.token.RefreshToken;
+import com.backend.model.entity.RefreshToken;
 
 import java.util.Optional;
 import java.util.UUID;

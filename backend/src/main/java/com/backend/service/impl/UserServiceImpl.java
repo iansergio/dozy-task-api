@@ -1,11 +1,11 @@
 package com.backend.service.impl;
 
-import com.backend.dto.auth.RegisterRequest;
-import com.backend.dto.user.FindUserByEmailResponse;
-import com.backend.dto.user.UpdateUserPasswordRequest;
-import com.backend.dto.user.UserResponse;
-import com.backend.entity.user.Role;
-import com.backend.entity.user.User;
+import com.backend.dto.request.RegisterRequest;
+import com.backend.dto.response.FindUserByEmailResponse;
+import com.backend.dto.request.UpdateUserPasswordRequest;
+import com.backend.dto.response.UserResponse;
+import com.backend.model.enums.Role;
+import com.backend.model.entity.User;
 import com.backend.exception.UserNotFoundException;
 import com.backend.repository.UserRepository;
 import com.backend.service.UserService;

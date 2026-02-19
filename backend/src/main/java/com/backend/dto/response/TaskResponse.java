@@ -1,8 +1,8 @@
-package com.backend.dto.task;
+package com.backend.dto.response;
 
-import com.backend.entity.task.Task;
-import com.backend.entity.task.Priority;
-import com.backend.entity.task.Status;
+import com.backend.model.entity.Task;
+import com.backend.model.enums.Priority;
+import com.backend.model.enums.Status;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

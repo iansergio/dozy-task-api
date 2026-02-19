@@ -1,9 +1,9 @@
 package com.backend.controller;
 
-import com.backend.dto.auth.RegisterRequest;
-import com.backend.dto.user.FindUserByEmailResponse;
-import com.backend.dto.user.UpdateUserPasswordRequest;
-import com.backend.dto.user.UserResponse;
+import com.backend.dto.request.RegisterRequest;
+import com.backend.dto.response.FindUserByEmailResponse;
+import com.backend.dto.request.UpdateUserPasswordRequest;
+import com.backend.dto.response.UserResponse;
 import com.backend.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

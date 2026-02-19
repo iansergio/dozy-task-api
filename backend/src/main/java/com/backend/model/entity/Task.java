@@ -1,7 +1,8 @@
-package com.backend.entity.task;
+package com.backend.model.entity;
 
-import com.backend.core.BaseEntity;
-import com.backend.entity.user.User;
+import com.backend.model.core.BaseEntity;
+import com.backend.model.enums.Priority;
+import com.backend.model.enums.Status;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;

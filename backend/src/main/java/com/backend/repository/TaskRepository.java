@@ -1,6 +1,6 @@
 package com.backend.repository;
 
-import com.backend.entity.task.Task;
+import com.backend.model.entity.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
