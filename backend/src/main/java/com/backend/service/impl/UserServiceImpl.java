@@ -6,6 +6,7 @@ import com.backend.dto.request.UpdateUserPasswordRequest;
 import com.backend.dto.response.UserResponse;
 import com.backend.model.enums.Role;
 import com.backend.model.entity.User;
+import com.backend.exception.InvalidDataException;
 import com.backend.exception.UserNotFoundException;
 import com.backend.repository.UserRepository;
 import com.backend.service.UserService;
@@ -77,8 +78,27 @@ public class UserServiceImpl implements UserService {
             throw new UserNotFoundException(id);
         }
 
+        if (!passwordEncoder.matches(request.oldPassword(), user.getPassword())) {
+            throw new InvalidDataException("Senha atual incorreta");
+        }
+
         user.setPassword(passwordEncoder.encode(request.password()));
 
+        User updated = userRepository.save(user);
+        return UserResponse.fromEntity(updated);
+    }
+
+    @Override
+    @Transactional
+    public UserResponse updatePasswordByEmail(String email, UpdateUserPasswordRequest request) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UserNotFoundException(email));
+
+        if (!passwordEncoder.matches(request.oldPassword(), user.getPassword())) {
+            throw new InvalidDataException("Senha atual incorreta");
+        }
+
+        user.setPassword(passwordEncoder.encode(request.password()));
         User updated = userRepository.save(user);
         return UserResponse.fromEntity(updated);
     }

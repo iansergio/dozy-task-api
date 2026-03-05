@@ -15,4 +15,5 @@ public interface UserService {
     Optional<FindUserByEmailResponse> findByEmail(String email);
     void delete(UUID id);
     UserResponse updatePassword(UUID id, UpdateUserPasswordRequest request, String currentUserEmail);
+    UserResponse updatePasswordByEmail(String email, UpdateUserPasswordRequest request);
 }

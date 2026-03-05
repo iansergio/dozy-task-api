@@ -67,4 +67,13 @@ public class UserController {
         UserResponse updated = service.updatePassword(id, request, userEmail);
         return ResponseEntity.status(HttpStatus.OK).body(updated);
     }
+
+    @PatchMapping("/me/password")
+    public ResponseEntity<UserResponse> patchMyPassword(
+            @AuthenticationPrincipal String userEmail,
+            @Valid @RequestBody UpdateUserPasswordRequest request
+    ) {
+        UserResponse updated = service.updatePasswordByEmail(userEmail, request);
+        return ResponseEntity.status(HttpStatus.OK).body(updated);
+    }
 }
